@@ -1,2 +1,2 @@
 # Processing-GUI
-GUI made in Processing for CS final project.
+GUI replicating ImGUI, made in Processing for CS final project.
