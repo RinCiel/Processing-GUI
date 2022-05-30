@@ -1,7 +1,7 @@
 class ImGUI_Tab {
   
   int C_TAB = color(21, 22, 23);
-  int C_TAB_CURRENT = color(48, 48, 49);
+  int C_TAB_CURRENT = color(38, 38, 39);
   
   String name;
   boolean current = false;
@@ -54,29 +54,5 @@ class ImGUI_Tab {
       return true;
     }
     return false;  
-  }
-  
-  void keyPressed() {
-    for (int i = 0; i < elements.size(); i++) {
-      elements.get(i).keyPressed();
-    }
-  }
-  
-  void mousePressed() {
-    for (int i = 0; i < elements.size(); i++) {
-      elements.get(i).mousePressed();
-    }
-  }
-  
-  void mouseDragged() {
-    for (int i = 0; i < elements.size(); i++) {
-      elements.get(i).mouseDragged();
-    }
-  }
-  
-  void mouseReleased() {
-    for (int i = 0; i < elements.size(); i++) {
-      elements.get(i).mouseReleased();
-    }
   }
 }
