@@ -1,19 +1,14 @@
 class ImGUI_Text extends ImGUI_Tab_Element {
   
   String text;
-  int x;
-  int y;
-  
-  ImGUI_Text(ImGUI gui, String text, int x, int y) {
+  ImGUI_Text(ImGUI gui, String text) {
     super(gui);
     this.text = text;
-    this.x = x;
-    this.y = y;
   }
   
   void display() {
     super.display();
     fill(255);
-    text(text, pos.x + x, pos.y + y);
+    text(text, pos.x + 3, pos.y + 10);
   }
 }

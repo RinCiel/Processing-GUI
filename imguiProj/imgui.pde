@@ -4,11 +4,10 @@ class ImGUI {
   // globals - customizable
   int C_BACKGROUND = color(21, 22, 23);
   int C_HEADER = color(42, 74, 123);
-  int C_BUTTON = color(37, 69, 112);
+  //int C_BUTTON = color(37, 69, 112);
   //int C_TEXTBOX = color(34, 49, 80);
   //int C_SLIDER = color(69, 130, 218);
   int C_STROKE = color(76, 92, 115);
-  int C_STROKE_2 = color(126, 142, 165);
   int C_TAB_STROKE = color(57, 57, 63);
   //=========================================================
 
@@ -81,10 +80,8 @@ class ImGUI {
   }
   
   boolean current_tab_set = false;
-  ImGUI_Tab current_tab;
   void newTab(ImGUI_Tab tab, boolean current) {
     if (current && !current_tab_set) {
-      current_tab = tab;
       tab.current = true;
       current_tab_set = true;
     }
@@ -106,9 +103,6 @@ class ImGUI {
     if (pressed) {
       for (int i = 0; i < tabs.size(); i++) {
         tabs.get(i).current = tabs.get(i).pressed();
-        if (tabs.get(i).current) {
-          current_tab = tabs.get(i);
-        }
       }
     }
   }
@@ -122,8 +116,6 @@ class ImGUI {
     if (mouseX > pos.x && mouseX < pos.x + size.x && mouseY > pos.y + headerHeight && mouseY < pos.y + headerHeight * 2) {
       changeTab();
     }
-    
-    current_tab.mousePressed();
   }
   
   boolean drag = false;
@@ -136,17 +128,9 @@ class ImGUI {
       pos.x += mouseX - pmouseX;
       pos.y += mouseY - pmouseY;
     }
-    
-    current_tab.mouseDragged();
   }
   
   void mouseReleased() {
     drag = false;
-    
-    current_tab.mouseReleased();
-  }
-  
-  void keyPressed() {
-    current_tab.keyPressed();
   }
 }
