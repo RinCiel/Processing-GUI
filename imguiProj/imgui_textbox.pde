@@ -10,7 +10,7 @@ class ImGUI_Textbox extends ImGUI_Tab_Element {
     
     int current_stroke;
 
-    ImGUI_Textbox(ImGUI gui, String text, int x, int y, int xSz, int ySz) {
+    ImGUI_Textbox(ImGUI gui, String text, int x, int y, int xSz) {
         super(gui);
         c_border = gui.C_STROKE;
         current_stroke = c_border;
@@ -22,20 +22,20 @@ class ImGUI_Textbox extends ImGUI_Tab_Element {
         this.x = x;
         this.y = y;
         this.xSz = xSz;
-        this.ySz = ySz;
+        this.ySz = 17;
     }
     
     ImGUI_Textbox(ImGUI gui, String text, int x, int y) {
-      this(gui, text, x, y, 100, 17);
+      this(gui, text, x, y, 80);
     }
     
     ImGUI_Textbox(ImGUI gui, int x, int y) {
-      this(gui, "", x, y, 100, 17);
+      this(gui, "", x, y, 80);
     }
     
     void textTrim() {
       visible_text = text;
-      while (textWidth(visible_text) > xSz - 3) {
+      while (textWidth(visible_text) > xSz - 4) {
         visible_text = visible_text.substring(1);
       }
     }
