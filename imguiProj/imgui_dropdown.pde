@@ -71,12 +71,6 @@ class ImGUI_Dropdown extends ImGUI_Tab_Element {
         text(options.get(i), optionsX + 3, optionsY + ySz/2);
         optionsY += ySz;
       }
-      
-      // create a scoll bar if there are more than 7 options
-      if (options.size() > 7) {
-        fill((c_fill + c_fill_options)/2);
-        rect(pos.x + xSz - 16, pos.y + y + ySz + 1, 16, ySz * 7);
-      }
     }
   }
   
