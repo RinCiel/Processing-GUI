@@ -23,6 +23,7 @@ class ImGUI_Textbox extends ImGUI_Tab_Element {
         this.y = y;
         this.xSz = xSz;
         this.ySz = 17;
+        super.display();
     }
     
     ImGUI_Textbox(ImGUI gui, String text, int x, int y) {
@@ -64,6 +65,7 @@ class ImGUI_Textbox extends ImGUI_Tab_Element {
     
     boolean pressed = false;
     void mousePressed() {
+      super.display();
       if (mouseX > pos.x + x && mouseX < pos.x + x + xSz && mouseY > pos.y + y && mouseY < pos.y + y + ySz) {
         current_stroke = c_border_clicked;
         pressed = true;

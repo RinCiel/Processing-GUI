@@ -32,6 +32,7 @@ class ImGUI_Dropdown extends ImGUI_Tab_Element {
         
     c_fill = gui.C_BUTTON;
     c_fill_options = color(29, 47, 70);
+    super.display();
   }
   
   ImGUI_Dropdown(ImGUI gui, String[] options, int x, int y) {
@@ -47,10 +48,10 @@ class ImGUI_Dropdown extends ImGUI_Tab_Element {
     noStroke();
     text(text, pos.x + x + 3, pos.y + y + ySz/2);
     if (pressed) {
-      triangle(pos.x + xSz - 13, pos.y + ySz + ySz - 1, pos.x + xSz - 8, pos.y + ySz + ySz/2, pos.x + xSz - 3, pos.y + ySz + ySz - 1);
+      triangle(pos.x + xSz - 13, pos.y + ySz * 3 + ySz/5, pos.x + xSz - 8, pos.y + ySz * 3 - ySz/2.5, pos.x + xSz - 3, pos.y + ySz * 3 + ySz/5);
     }
     else {
-      triangle(pos.x + xSz - 13, pos.y + ySz + ySz/2, pos.x + xSz - 8, pos.y + ySz + ySz - 1, pos.x + xSz - 3, pos.y + ySz + ySz/2);
+      triangle(pos.x + xSz - 13, pos.y + ySz * 3 - ySz/2.5, pos.x + xSz - 8, pos.y + ySz * 3 + ySz/5, pos.x + xSz - 3, pos.y + ySz * 3 - ySz/2.5);
     }
     
     if (pressed) {
@@ -71,6 +72,7 @@ class ImGUI_Dropdown extends ImGUI_Tab_Element {
         text(options.get(i), optionsX + 3, optionsY + ySz/2);
         optionsY += ySz;
       }
+      
     }
   }
   
