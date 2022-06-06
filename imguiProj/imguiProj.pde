@@ -1,6 +1,7 @@
 ImGUI gui;
 ImGUI_Text tab2_text;
 
+
 void setup() {
   size(500, 500);
   gui = new ImGUI("Debug", 400, 250);
@@ -15,7 +16,8 @@ void setup() {
   tab2.addElement(new ImGUI_Textbox(gui, "hi", 0, 15));
   tab2.addElement(new ImGUI_Dropdown(gui, dropdown_options, 0, 40, 60));
   tab2.addElement(tab2_text);
-  
+  String[] radioOptions = {"one", "two", "three"};
+  tab2.addElement(new ImGUI_Radio(gui,radioOptions, 0, 60, 150));
   gui.newTab(tab1, true);
   gui.newTab(tab2);
 }
