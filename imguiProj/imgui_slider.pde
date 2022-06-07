@@ -45,11 +45,11 @@ class ImGUI_Slider extends ImGUI_Tab_Element {
     text(str(start), pos.x+x,pos.y+y+(5 * ySz/6));
     text(str(end), pos.x+x+xSz - (str(end).length() * 8),pos.y+y+(5 * ySz/6));
 
-    stroke(0);
+    stroke(50);
     fill(97,139,172);
-    circle(circleX,y+pos.y+ySz/3,ySz);
+    circle(circleX,y+pos.y+ySz/3,ySz - 5);
     fill(255);
-    text(text,pos.x+x+xSz + 5, pos.y+y+ySz/3);
+    text(text,pos.x+x+xSz + 15, pos.y+y+ySz/3);
 
     textAlign(CENTER,CENTER);
     text(str(val),circleX,y + pos.y+ySz/3);
