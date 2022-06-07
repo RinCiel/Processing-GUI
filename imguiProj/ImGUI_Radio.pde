@@ -38,10 +38,10 @@ class ImGUI_Radio extends ImGUI_Tab_Element {
         newTempx = x + pos.x + (i * xOffset);
       }
       stroke(8,228,255);
-      strokeWeight(3);
+      //strokeWeight(3);
       if (pressedOne == i){
         fill(8,228,255);
-        square(newTempx + int(ySz/4)+0.99899,y+pos.y + int(ySz/4),int(ySz/2));
+        square(newTempx + 3,y+pos.y + 3,11);
       }
       noFill();
       square(newTempx,y + pos.y,ySz);
