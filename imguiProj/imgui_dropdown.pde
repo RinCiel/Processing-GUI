@@ -48,10 +48,10 @@ class ImGUI_Dropdown extends ImGUI_Tab_Element {
     noStroke();
     text(text, pos.x + x + 3, pos.y + y + ySz/2);
     if (pressed) {
-      triangle(pos.x + xSz - 13, pos.y + ySz * 3 + ySz/5, pos.x + xSz - 8, pos.y + ySz * 3 - ySz/2.5, pos.x + xSz - 3, pos.y + ySz * 3 + ySz/5);
+      triangle(pos.x + x + xSz - 13, pos.y + y + ySz/1.5 + ySz/5, pos.x + x + xSz - 8, pos.y + y + ySz/1.5 - ySz/2.5, pos.x + x + xSz - 3, pos.y + y + ySz/1.5 + ySz/5);
     }
     else {
-      triangle(pos.x + xSz - 13, pos.y + ySz * 3 - ySz/2.5, pos.x + xSz - 8, pos.y + ySz * 3 + ySz/5, pos.x + xSz - 3, pos.y + ySz * 3 - ySz/2.5);
+      triangle(pos.x + x + xSz - 13, pos.y + y + ySz/1.5 - ySz/2.5, pos.x + x + xSz - 8, pos.y + y + ySz/1.5 + ySz/5, pos.x + x + xSz - 3, pos.y + y + ySz/1.5 - ySz/2.5);
     }
     
     if (pressed) {
