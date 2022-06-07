@@ -18,21 +18,21 @@ class ImGUI {
   int radius = 5;
   int headerHeight = 20;
   String headerText;
-  
+ 
   PFont font;
-  
+ 
   ArrayList<ImGUI_Tab> tabs;
 
   ImGUI(String name) {
     this(name, 200, 100);
   }
-  
+ 
   ImGUI(String headerText, int xSz, int ySz) {
     this.headerText = headerText;
     pos = new PVector(0, 0);
     size = new PVector(xSz, ySz);
     tabs = new ArrayList<ImGUI_Tab>();
-    
+   
     font = createFont("ProggyClean.ttf", 128);
     textFont(font, 16);
   }
@@ -58,10 +58,10 @@ class ImGUI {
     }
     textAlign(LEFT, CENTER);
     text(headerText, pos.x + 19, pos.y + headerHeight/2);
-    
+   
     // update tab positions
     tab_pos = new PVector(pos.x + 1, pos.y + headerHeight + 1);
-    
+   
     // display tabs
     if (opened) {
       if (tabs.size() > 0) {
@@ -73,13 +73,13 @@ class ImGUI {
         tab_pos.x += int(tabs.get(i).tabWidth);
       }
     }
-    
+   
   }
-  
+ 
   void newTab(ImGUI_Tab tab) {
     tabs.add(tab);
   }
-  
+ 
   boolean current_tab_set = false;
   ImGUI_Tab current_tab;
   void newTab(ImGUI_Tab tab, boolean current) {
@@ -94,7 +94,7 @@ class ImGUI {
     }
     tabs.add(tab);
   }
-  
+ 
   void changeTab() {
     boolean pressed = false;
     for (int i = 0; i < tabs.size(); i++) {
@@ -112,40 +112,46 @@ class ImGUI {
       }
     }
   }
-  
+  boolean headerPressed = false;
   void mousePressed() {
     // header triangle
+    if (mouseX > pos.x && mouseX < pos.x + size.x && mouseY > pos.y && mouseY < pos.y + headerHeight) {
+      headerPressed = true;
+    }
+    else headerPressed = false;
+   
     if (mouseX > pos.x + 6 && mouseX < pos.x + 14 && mouseY > pos.y + 6 && mouseY < pos.y + 14) {
       opened = !opened;
       return;
     }
     if (mouseX > pos.x && mouseX < pos.x + size.x && mouseY > pos.y + headerHeight && mouseY < pos.y + headerHeight * 2) {
       changeTab();
+      println("changerav");
     }
-    
+   
     current_tab.mousePressed();
   }
-  
+ 
   boolean drag = false;
   void mouseDragged() {
     // draggable header - should be the last thing checked
-    if (mouseX > pos.x && mouseX < pos.x + size.x && mouseY > pos.y && mouseY < pos.y + headerHeight) {
+    if (mouseX > pos.x && mouseX < pos.x + size.x && mouseY > pos.y && mouseY < pos.y + headerHeight && headerPressed) {
       drag = true;
     }
     if (drag) {
       pos.x += mouseX - pmouseX;
       pos.y += mouseY - pmouseY;
     }
-    
+   
     current_tab.mouseDragged();
   }
-  
+ 
   void mouseReleased() {
     drag = false;
-    
+   
     current_tab.mouseReleased();
   }
-  
+ 
   void keyPressed() {
     current_tab.keyPressed();
   }
