@@ -6,9 +6,10 @@ class ImGUI_Radio extends ImGUI_Tab_Element {
   int xSz;
   int ySz;
   String text = "";
- int pressedOne;
- float newTempx;
- float temp;
+  int pressedOne;
+  float newTempx;
+  float temp;
+  
   ImGUI_Radio(ImGUI gui, String[] buttons, int pressedOne, int x, int y, int xSz) {
     super(gui);
     this.buttons = new ArrayList<String>();
@@ -37,14 +38,15 @@ class ImGUI_Radio extends ImGUI_Tab_Element {
       else{
         newTempx = x + pos.x + (i * xOffset);
       }
-      stroke(8,228,255);
       //strokeWeight(3);
       if (pressedOne == i){
-        fill(8,228,255);
+        noStroke();
+        fill(52, 138, 255);
         square(newTempx + 3,y+pos.y + 3,11);
       }
       noFill();
-      square(newTempx,y + pos.y,ySz);
+      stroke(160);
+      square(newTempx,y + pos.y,ySz - 1);
       fill(255);
       text(buttons.get(i),newTempx + ySz+5, y + pos.y+17/2);
       strokeWeight(1);

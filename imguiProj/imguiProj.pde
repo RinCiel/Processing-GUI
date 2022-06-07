@@ -13,6 +13,8 @@ void setup() {
   tab1.addElement(new ImGUI_Textbox(gui, "hello", 0, 0));
   String dropdown_options[] = {"test0", "test1", "test2", "test3", "test4", "test5", "test6", "test7"};
   tab1.addElement(new ImGUI_Dropdown(gui, dropdown_options, 0, 30, 80));
+  String[] radioOptions = {"one", "two", "three"};
+  tab1.addElement(new ImGUI_Radio(gui,radioOptions, 2, 0, 60, 150));
   
   ImGUI_Tab tab2 = new ImGUI_Tab("tab2");
   tab2_text = new ImGUI_Text(gui, "", 0, 0);
