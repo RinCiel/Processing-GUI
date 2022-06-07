@@ -16,7 +16,7 @@ class ImGUI_Checkbox extends ImGUI_Tab_Element{
   void display(){
 
     super.display();
-    fill(color(8, 228, 255));
+    fill(52, 138, 255);
     if (checked){
       noStroke();
       square(pos.x + x + 3, pos.y + y + 3, 11);
