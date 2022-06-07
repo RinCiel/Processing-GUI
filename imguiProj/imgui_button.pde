@@ -1,4 +1,4 @@
-class ImGUI_button extends ImGUI_Tab_Element{
+class ImGUI_Button extends ImGUI_Tab_Element{
   boolean pressed;
   String text;
   float size;
@@ -10,7 +10,7 @@ class ImGUI_button extends ImGUI_Tab_Element{
   //int xSz;
   boolean doOnce = false;
   int startTime = 0;
-  ImGUI_button(ImGUI gui,String text,int x, int y){
+  ImGUI_Button(ImGUI gui,String text,int x, int y){
     super(gui);
     this.text = text;
     size = 8 * text.length();
@@ -22,7 +22,7 @@ class ImGUI_button extends ImGUI_Tab_Element{
     size = 100;
     super.display();
   }
-  ImGUI_button(ImGUI gui,String text,int x, int y, int xSz){
+  ImGUI_Button(ImGUI gui,String text,int x, int y, int xSz){
     super(gui);
     this.text = text;
     size = 8 * text.length();
