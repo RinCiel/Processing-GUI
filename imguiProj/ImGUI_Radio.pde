@@ -8,14 +8,15 @@ class ImGUI_Radio extends ImGUI_Tab_Element {
   String text = "";
  int pressedOne;
  float newTempx;
-
-  ImGUI_Radio(ImGUI gui, String[] buttons, int x, int y, int xSz) {
+ float temp;
+  ImGUI_Radio(ImGUI gui, String[] buttons, int pressedOne, int x, int y, int xSz) {
     super(gui);
     this.buttons = new ArrayList<String>();
     this.x = x;
     this.y = y;
     this.xSz = xSz;
     this.ySz = 17;
+    this.pressedOne = pressedOne;
     for (int i = 0; i < buttons.length; i++) {
       this.buttons.add(buttons[i]);
     }
@@ -23,65 +24,40 @@ class ImGUI_Radio extends ImGUI_Tab_Element {
   }
   
   ImGUI_Radio(ImGUI gui, String[] buttons, int x, int y) {
-    this(gui, buttons, x, y, 80);
+    this(gui, buttons, 0, x, y, 80);
   }
   
   void display() {
+    float xOffset = xSz / float(buttons.size());
     super.display();
     for (int i = 0; i < buttons.size();i++){
+      temp = (i * xOffset);
+      println(i, xOffset,temp);
       if (i == 0) newTempx = x + pos.x;
       else{
-        newTempx = x + pos.x + (xSz - (i-1) * (xSz / float(buttons.size())));
+        newTempx = x + pos.x + (i * xOffset);
       }
-      fill(8,228,255);
+      stroke(8,228,255);
+      strokeWeight(3);
+      if (pressedOne == i){
+        fill(8,228,255);
+        square(newTempx + int(ySz/4)+0.99899,y+pos.y + int(ySz/4),int(ySz/2));
+      }
+      noFill();
       square(newTempx,y + pos.y,ySz);
       fill(255);
-      text(buttons.get(i),newTempx + ySz, y + pos.y+17/2);
-      
+      text(buttons.get(i),newTempx + ySz+5, y + pos.y+17/2);
+      strokeWeight(1);
     }
-    
-    //stroke(current_stroke);
-    //fill(c_fill);
-    //rect(pos.x + x, pos.y + y, xSz, ySz);
-    //fill(255);
-    //noStroke();
-    //text(text, pos.x + x + 3, pos.y + y + ySz/2);
-    //if (pressed) {
-    //  triangle(pos.x + xSz - 13, pos.y + ySz * 3 + ySz/5, pos.x + xSz - 8, pos.y + ySz * 3 - ySz/2.5, pos.x + xSz - 3, pos.y + ySz * 3 + ySz/5);
-    //}
-    //else {
-    //  triangle(pos.x + xSz - 13, pos.y + ySz * 3 - ySz/2.5, pos.x + xSz - 8, pos.y + ySz * 3 + ySz/5, pos.x + xSz - 3, pos.y + ySz * 3 - ySz/2.5);
-    //}
-    
-    //if (pressed) {
-    //  // load in options
-    //  float optionsX = pos.x + x;
-    //  float optionsY = pos.y + y + ySz + 1;
-    //  stroke(80, 80, 80, 50);
-    //  for (int i = 0; i < options.size() && i < 7; i++) {
-    //    // if mouse is over it, highlight it
-    //    if (mouseX > optionsX && mouseX < optionsX + xSz && mouseY > optionsY && mouseY < optionsY + ySz) {
-    //      fill(c_fill);
-    //    }
-    //    else {
-    //      fill(c_fill_options);
-    //    }
-    //    rect(optionsX, optionsY, xSz, ySz);
-    //    fill(255);
-    //    text(options.get(i), optionsX + 3, optionsY + ySz/2);
-    //    optionsY += ySz;
-    //  }
-      
-    //}
   }
   
   boolean pressed = false;
   void mousePressed() {
-    
+    float xOffset = xSz / float(buttons.size());
     for (int i = 0; i < buttons.size();i++){
       if (i == 0) newTempx = x + pos.x;
       else{
-        newTempx = x + pos.x + (buttons.get(i).length() * 16);
+        newTempx = x + pos.x + (i * xOffset);
       }
       
       if (mouseX > newTempx && mouseX < newTempx + ySz && mouseY > y + pos.y && mouseY < y + pos.y + ySz){

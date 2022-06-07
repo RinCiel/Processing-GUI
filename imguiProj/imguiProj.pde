@@ -17,7 +17,7 @@ void setup() {
   tab2.addElement(new ImGUI_Dropdown(gui, dropdown_options, 0, 40, 60));
   tab2.addElement(tab2_text);
   String[] radioOptions = {"one", "two", "three"};
-  tab2.addElement(new ImGUI_Radio(gui,radioOptions, 0, 60, 150));
+  tab2.addElement(new ImGUI_Radio(gui,radioOptions, 2, 0, 60, 150));
   gui.newTab(tab1, true);
   gui.newTab(tab2);
 }
