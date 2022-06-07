@@ -21,7 +21,7 @@ class ImGUI_Checkbox extends ImGUI_Tab_Element{
       noStroke();
       square(pos.x + x + 3, pos.y + y + 3, 11);
     }
-    stroke(8, 228, 255);
+    stroke(160);
     noFill();
     square(pos.x+x,pos.y+y,size);
     fill(255);

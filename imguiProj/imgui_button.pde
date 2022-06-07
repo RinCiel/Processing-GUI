@@ -35,11 +35,14 @@ class ImGUI_button extends ImGUI_Tab_Element{
     
     super.display();
   }
+  
+  int pressed_counter = 0;
   void display(){
    // println(pressed);
 
     super.display();
     fill(color(27,59,102));
+    stroke(76, 92, 115);
     if (pressed){
       fill(color(47,79,122));
       rect(pos.x+x,pos.y+y,size,sizey);
@@ -51,49 +54,18 @@ class ImGUI_button extends ImGUI_Tab_Element{
     //text(text,pos.x,pos.y);
     fill(255);
     text(text, pos.x + 3+x, pos.y + 7+y);
-    if (pressed && frameCount - startTime > 100) pressed = false;
-  }
-  //boolean held = false;
-  //void mousePressed(){
-  //  if ( !pressed && mouseX >= pos.x +x && mouseY >= pos.y +y&& mouseX < pos.x +x + size && mouseY < pos.y + y+ sizey && !doOnce && startTime < millis() - 1000){
-  //    pressed = true;
-  //    doOnce = true;
-  //    startTime = millis();
-  //    //held = true;
-  //  //  startTime = millis();
-  //  } 
-  //  //else{
-  //  //  pressed = false;
-  //  //}
-  //}
-  void mouseReleased(){
-     if (!pressed && mouseX >= pos.x +x && mouseY >= pos.y +y&& mouseX < pos.x +x + size && mouseY < pos.y + y+ sizey){
-      pressed = true;
-      startTime = frameCount;
-    //pressed = false;
-    //doOnce = false;
+    if (pressed) {
+      pressed_counter++;
     }
-  
+    if (pressed_counter == 2) {
+      pressed = false;
+      pressed_counter = 0;
+    }
   }
-  
-  
+
+  void mouseReleased(){
+     if (mouseX >= pos.x +x && mouseY >= pos.y +y&& mouseX < pos.x +x + size && mouseY < pos.y + y+ sizey){
+      pressed = true;
+    }
+  }
 }
-
-
-
-
-
-//class ImGUI_Text extends ImGUI_Tab_Element {
-  
-//  String text;
-//  ImGUI_Text(ImGUI gui, String text) {
-//    super(gui);
-//    this.text = text;
-//  }
-  
-//  void display() {
-//    super.display();
-//    fill(255);
-//    text(text, pos.x + 3, pos.y + 10);
-//  }
-//}
