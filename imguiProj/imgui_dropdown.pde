@@ -46,6 +46,7 @@ class ImGUI_Dropdown extends ImGUI_Tab_Element {
     rect(pos.x + x, pos.y + y, xSz, ySz);
     fill(255);
     noStroke();
+    textAlign(BASELINE,CENTER);
     text(text, pos.x + x + 3, pos.y + y + ySz/2);
     if (pressed) {
       triangle(pos.x + x + xSz - 13, pos.y + y + ySz/1.5 + ySz/5, pos.x + x + xSz - 8, pos.y + y + ySz/1.5 - ySz/2.5, pos.x + x + xSz - 3, pos.y + y + ySz/1.5 + ySz/5);
