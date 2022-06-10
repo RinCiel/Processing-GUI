@@ -58,7 +58,7 @@ class ImGUI_Button extends ImGUI_Tab_Element{
     if (pressed) {
       pressed_counter++;
     }
-    if (pressed_counter == 2) {
+    if (pressed_counter == 1) {
       pressed = false;
       pressed_counter = 0;
     }

@@ -62,8 +62,8 @@ void setup() {
   clearButton = new ImGUI_Button(gui,"Clear",170 , 0, 40);
   frames = new ImGUI_Slider(gui,"Frame rate", 5, 20, 150, 5, 100, 30, 5);
   size = new ImGUI_Slider(gui,"Grid Size", 5, 40, 150, 50, 200, 75, 5);
-  pop = new ImGUI_Text(gui,"",0,80);
-  gen = new ImGUI_Text(gui,"",35,80);
+  pop = new ImGUI_Text(gui,"Population: 0",0,80);
+  gen = new ImGUI_Text(gui,"Population : 0",125,80);
   mode = new ImGUI_Dropdown(gui, modeDropdown, 75, 0, 55);
   rulesInfo = new ImGUI_Text(gui, "Default is Conway's Rule.However,", 0, 25);
   rule = new ImGUI_Radio(gui, ruleRadio, 0, 0, 90, 235);
@@ -127,8 +127,8 @@ void draw() {
     started = false;
     step = false;
     grid = new Grid(gridSize, conwayRule);
-    pop.text = Float.toString(0);
-    gen.text = Float.toString(0);
+    pop.text = "Population: " + str(0);
+    gen.text = "Generation: " + str(0);
   }
   frameRate(frames.val);
   if (mode.text.equals(modeDropdown[1])){

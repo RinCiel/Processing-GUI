@@ -15,8 +15,9 @@ class ImGUI_Dropdown extends ImGUI_Tab_Element {
   
   String text = "";
     
-  ImGUI_Dropdown(ImGUI gui, String[] options, int x, int y, int xSz) {
+  ImGUI_Dropdown(ImGUI gui, String[] options, String text, int x, int y, int xSz) {
     super(gui);
+    this.text = text;
     this.options = new ArrayList<String>();
     this.x = x;
     this.y = y;
@@ -35,9 +36,14 @@ class ImGUI_Dropdown extends ImGUI_Tab_Element {
     super.display();
   }
   
-  ImGUI_Dropdown(ImGUI gui, String[] options, int x, int y) {
-    this(gui, options, x, y, 80);
+  ImGUI_Dropdown(ImGUI gui, String[] options, int x, int y, int xSz) {
+    this(gui, options, "", x, y, xSz);
   }
+  
+  ImGUI_Dropdown(ImGUI gui, String[] options, int x, int y) {
+    this(gui, options, "", x, y, 80);
+  }
+  
   
   void display() {
     super.display();

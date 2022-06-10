@@ -38,6 +38,7 @@ class ImGUI_Slider extends ImGUI_Tab_Element {
     super.display();
     if (val >= end) val = stepHelper(end,step,false);
     if (val <= start) val = stepHelper(start,step,true);
+   
     circleX = map(val,start,end,x + pos.x,x+pos.x+xSz);
     fill(C_BUTTON);
     stroke(C_BUTTON);
@@ -67,7 +68,8 @@ class ImGUI_Slider extends ImGUI_Tab_Element {
       if (pressed){
       valThing  = int(map(mouseX,x+pos.x,x+pos.x+xSz,start,end));
       val = valThing;
-
+      if (val >= end) val = stepHelper(end,step,false);
+      if (val <= start) val = stepHelper(start,step,true);
    
     }
     
@@ -78,6 +80,8 @@ class ImGUI_Slider extends ImGUI_Tab_Element {
       if (valThing % step > step/2f) val = valThing + (step - (valThing % step));
       else val = valThing - (valThing % step);
     }
+    if (val >= end) val = stepHelper(end,step,false);
+    if (val <= start) val = stepHelper(start,step,true);
   }
   int stepHelper(int valThing,int step, boolean start){
     if (valThing % step != 0){

@@ -53,10 +53,10 @@ class Grid {
         }
       }
     }
-    pop.text = Float.toString(population);
+    pop.text = "Population: " + str(population);
     //brcSetMonitor("Population", population);
     generation++;
-    gen.text = Float.toString(generation);
+    gen.text = "Generation: " + str(generation);
     //brcSetMonitor("Generation", generation);
   }
   
