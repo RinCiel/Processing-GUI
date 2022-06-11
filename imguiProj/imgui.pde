@@ -111,19 +111,24 @@ class ImGUI {
     }
   }
   boolean headerPressed = false;
+  boolean pressed = false;
   void mousePressed() {
     // header triangle
-    if (mouseX > pos.x && mouseX < pos.x + size.x && mouseY > pos.y && mouseY < pos.y + headerHeight) {
-      headerPressed = true;
-    } else headerPressed = false;
-
+    if (mouseX > pos.x && mouseX < pos.x + size.x && mouseY > pos.y && mouseY < pos.y + size.y) {
+      pressed = true;
+      if (mouseX > pos.x && mouseX < pos.x + size.x && mouseY > pos.y && mouseY < pos.y + headerHeight) {
+        headerPressed = true;
+      } 
+      else headerPressed = false;
+    }
+    else pressed = false;
     if (mouseX > pos.x + 6 && mouseX < pos.x + 14 && mouseY > pos.y + 6 && mouseY < pos.y + 14) {
       opened = !opened;
       return;
     }
     if (mouseX > pos.x && mouseX < pos.x + size.x && mouseY > pos.y + headerHeight && mouseY < pos.y + headerHeight * 2) {
       changeTab();
-      println("changerav");
+      //println("changerav");
     }
 
     current_tab.mousePressed();

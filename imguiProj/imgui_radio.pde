@@ -33,7 +33,7 @@ class ImGUI_Radio extends ImGUI_Tab_Element {
     super.display();
     for (int i = 0; i < buttons.size();i++){
       temp = (i * xOffset);
-      println(i, xOffset,temp);
+      //println(i, xOffset,temp);
       if (i == 0) newTempx = x + pos.x;
       else{
         newTempx = x + pos.x + (i * xOffset);

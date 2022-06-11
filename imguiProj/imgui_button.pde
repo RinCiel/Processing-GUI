@@ -53,11 +53,12 @@ class ImGUI_Button extends ImGUI_Tab_Element{
     //fill(35);
     //text(text,pos.x,pos.y);
     fill(255);
+    textAlign(BASELINE,CENTER);
     text(text, pos.x + 3+x, pos.y + 7+y);
     if (pressed) {
       pressed_counter++;
     }
-    if (pressed_counter == 2) {
+    if (pressed_counter == 1) {
       pressed = false;
       pressed_counter = 0;
     }
