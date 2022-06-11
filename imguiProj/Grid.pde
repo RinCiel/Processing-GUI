@@ -227,7 +227,8 @@ class Cell {
   void display() {
     if (alive) {
       stroke(0);
-      fill(lerpColor(color(255), color(0,255,0), 0.05 * generationsAlive));
+      
+      fill(lerpColor(color(255), colors.currentColor, 0.05 * generationsAlive));
       square(xCoord, yCoord, size);
     }
   }

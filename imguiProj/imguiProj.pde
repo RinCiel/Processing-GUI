@@ -36,6 +36,13 @@ ImGUI_Text sampleInfo1;
 ImGUI_Dropdown sampleChoice;
 ImGUI_Text pop;
 ImGUI_Text gen;
+ImGUI_Color colors;
+ImGUI_Text r;
+ImGUI_Text g;
+ImGUI_Text b;
+
+
+
 
 String modeDropdown[] = {"Draw", "Erase"};
 String ruleRadio[] = {"Conway's Rule", "Highlife Rule"};
@@ -55,6 +62,7 @@ void setup() {
   ImGUI_Tab tab1 = new ImGUI_Tab("Setup");
   ImGUI_Tab tab2 = new ImGUI_Tab("Options");
   ImGUI_Tab tab3 = new ImGUI_Tab("Population");
+  ImGUI_Tab tab4 = new ImGUI_Tab("Color");
 
   startButton = new ImGUI_Button(gui,"Start", 5, 0, 40);
   stepButton = new ImGUI_Button(gui,"Step", 60, 0, 40);
@@ -63,15 +71,19 @@ void setup() {
   frames = new ImGUI_Slider(gui,"Frame rate", 5, 20, 150, 5, 100, 30, 5);
   size = new ImGUI_Slider(gui,"Grid Size", 5, 40, 150, 50, 200, 75, 5);
   pop = new ImGUI_Text(gui,"Population: 0",0,80);
-  gen = new ImGUI_Text(gui,"Population : 0",125,80);
-  mode = new ImGUI_Dropdown(gui, modeDropdown, 75, 0, 55);
+  gen = new ImGUI_Text(gui,"Generation : 0",125,80);
+  mode = new ImGUI_Dropdown(gui, modeDropdown, "Draw", 75, 0, 55);
   rulesInfo = new ImGUI_Text(gui, "Default is Conway's Rule.However,", 0, 25);
   rule = new ImGUI_Radio(gui, ruleRadio, 0, 0, 90, 235);
   popInfo = new ImGUI_Text(gui, "For random population", 0, 0);
   alive = new ImGUI_Slider(gui, "Percent alive", 5, 10, 150, 0, 100, 0, 1);
   sampleInfo = new ImGUI_Text(gui, "These are some cool samples.", 0, 35);
   sampleInfo1 = new ImGUI_Text(gui, "Replicator samples only work w/ Highlife", 0, 46);
-  sampleChoice = new ImGUI_Dropdown(gui,sampleDropdown, 0, 57,180);
+  sampleChoice = new ImGUI_Dropdown(gui,sampleDropdown, "None", 0, 57,180);
+  colors = new ImGUI_Color(gui, 0, 0, color(0,255,0));
+  r = new ImGUI_Text(gui, "R: "+ str(red(colors.currentColor)), 100, 0);
+  g = new ImGUI_Text(gui, "G: "+ str(green(colors.currentColor)), 100, 11);
+  b = new ImGUI_Text(gui, "B: "+ str(blue(colors.currentColor)), 100, 22);
 
   //variables for values
   
@@ -101,10 +113,15 @@ void setup() {
   tab3.addElement(sampleInfo1);
   tab3.addElement(sampleChoice);
   
-  
+  tab4.addElement(colors);
+  tab4.addElement(r);
+  tab4.addElement(g); 
+  tab4.addElement(b);
+   
   gui.newTab(tab1, true);
   gui.newTab(tab2);
   gui.newTab(tab3);
+  gui.newTab(tab4);
 }
 
 void draw() {
@@ -117,7 +134,7 @@ void draw() {
   else if (stepButton.pressed){
     step = true;
     stepped = false;
-    println("Steppress");
+    //println("Steppress");
   }
   else if (stopButton.pressed){
     started = false;
@@ -171,13 +188,23 @@ void draw() {
         grid.loadSample(sample);  
     }
   }
-  if (drawing) {
-    if (!gui.drag && !gui.pressed){
-      if (mousePressed == true) {
+  //if (drawing) {
+  //  if (!gui.drag && !gui.pressed){
+  //    if (mousePressed == true) {
+  //      grid.isPressed(true);
+  //    }
+  //  } else {
+  //    if (mousePressed == true) {
+  //      grid.isPressed(false);
+  //    }
+  //  }
+  //}
+  if (!gui.drag && !gui.pressed) {
+    if (mousePressed == true) {
+      if (drawing) {
         grid.isPressed(true);
       }
-    } else {
-      if (mousePressed == true) {
+      else {
         grid.isPressed(false);
       }
     }
@@ -188,11 +215,14 @@ void draw() {
   }
   else if (step && !stepped) {
     grid.grow();
+    stepped = true;
   }
-
+  r.text =   "R: "+ str(red(colors.currentColor));
+  g.text =   "G: "+ str(green(colors.currentColor));
+  b.text =   "B: "+ str(blue(colors.currentColor));
+  
   grid.display();
   gui.display();
-
 
 }
 void mousePressed() {
