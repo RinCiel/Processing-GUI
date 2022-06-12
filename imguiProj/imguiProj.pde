@@ -55,7 +55,7 @@ void setup() {
   size(800, 800);
   grid = new Grid(gridSize, conwayRule);
   grid.display();
-  gui = new ImGUI("Debug", 295, 155);
+  gui = new ImGUI("GoL Menu", 295, 155);
   //define lists for dropdowns
 
   // create actual elements
